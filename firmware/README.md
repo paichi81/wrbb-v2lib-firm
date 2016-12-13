@@ -1,3 +1,8 @@
+## paichi81注記：
+takjnさんのAdafruit SSD, GFX, NeoPixel関連を ./ext/内にマージし、eep loaderを自分好みに改良、i2cdetectを実装しかけて途中でやめてるという自己責任でどうぞ版です。
+
+
+## 概要
 Wakayama.rb Ruby Board V2 library Firmware
 ------
 firmware_release フォルダ内にあるものがリリース版です。
