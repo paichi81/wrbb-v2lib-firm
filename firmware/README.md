@@ -1,5 +1,49 @@
 ## paichi81注記：
 takjnさんのAdafruit SSD, GFX, NeoPixel関連を ./ext/内にマージし、eep loaderを自分好みに改良、i2cdetectを実装しかけて途中でやめてるという自己責任でどうぞ版です。
+mruby-grcitrus-rubishというmrbgemを組み込んだlibmruby.aにしています。
+pinをオブジェクトとして定義できるので、ちょっとは見とおしがよくなるかもしれません。
+またAdafruit LEDBackpackぽい? LEDmatrix Classも内包しているので、8x8のLED matrixが扱えます。
+
+```ruby:sample.rb
+button = Button.new(:pin_8) #=> pin8番,GNDにタクトスイッチを接続
+matrix = LEDmatrix::BiColor_8x8.new({:wire=>4, :addr=0x70})
+
+egao = [
+  "01111110",
+  "10000001",
+  "10300301",
+  "10000001",
+  "10200201",
+  "10022001",
+  "10000001",
+  "01111110"
+]
+magao = [
+  "01111110",
+  "10000001",
+  "10200201",
+  "10200201",
+  "10000001",
+  "10333301",
+  "10000001",
+  "01111110"
+]
+
+
+50.times do
+  [egao, magao].each do |kao|
+    matrix.buffer = kao
+    matrix.write_display
+
+    System.exit  if button.on?
+    delay 500
+  end
+end
+
+```
+
+
+
 
 
 ## 概要
